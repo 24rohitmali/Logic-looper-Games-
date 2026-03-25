@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  name      String?
+  password  String?
+  streak    Int        @default(0)
+  lastPlayed DateTime?
+  totalPoints Int      @default(0)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  stats     UserStats?
+  scores    DailyScore[]
+  
+  @@index([email])
+}
+
+model UserStats {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  puzzlesSolved Int      @default(0)
+  avgSolveTime  Int      @default(0)
+  totalAttempts Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model DailyScore {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date      String   // YYYY-MM-DD format
+  puzzleId  String
+  solved    Boolean  @default(false)
+  score     Int      @default(0)
+  timeTaken Int      @default(0)
+  createdAt DateTime @default(now())
+  
+  @@unique([userId, date])
+  @@index([userId, date])
+}
+
+model Leaderboard {
+  id        String   @id @default(cuid())
+  userId    String
+  rank      Int
+  points    Int
+  date      String   // YYYY-MM-DD format
+  createdAt DateTime @default(now())
+  
+  @@unique([userId, date])
+  @@index([date, rank])
+}
