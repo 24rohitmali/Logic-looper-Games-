@@ -1,123 +1,94 @@
-# Logic Looper - Daily Puzzle Game
+# 🧩 Logic Looper
 
-A full-stack daily puzzle game application built with React, Node.js, and PostgreSQL.
-
-## Features
-
-✨ **Daily Puzzles**: 365 unique puzzles rotating through 5 different types
-🔥 **Streak System**: Build daily streaks and earn rewards
-🎯 **Multiple Puzzle Types**: Sudoku, Pattern Matching, Sequences, Deduction, Binary Logic
-📊 **Leaderboards**: Compete with other players
-🎮 **Offline Support**: Play anywhere with IndexedDB storage
-🚀 **Fast & Lightweight**: Client-first architecture for instant puzzle generation
-
-## Tech Stack
-
-### Frontend
-- React 18 with Vite
-- Redux Toolkit for state management
-- Tailwind CSS & Framer Motion for styling
-- Day.js for date handling
-- IndexedDB for offline storage
-
-### Backend
-- Node.js + Express
-- PostgreSQL (via Prisma ORM)
-- Minimalist API design
-
-## Quick Start
-
-### Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-# Visit http://localhost:5173
-```
-
-### Backend Setup
-```bash
-cd backend
-npm install
-# Setup .env with DATABASE_URL
-npx prisma migrate dev
-npm run dev
-# Backend runs on http://localhost:3000
-```
-
-## Project Structure
-
+A responsive puzzle-based web application built with modern frontend technologies. Designed for performance, scalability, and an engaging user experience.
+---
+## 🚀 Features
+* 🎯 Interactive puzzle grid system
+* 📱 Fully responsive design (mobile + desktop)
+* ⚡ Fast rendering with optimized layout
+* 🎨 Clean and minimal UI
+* 🔁 Dynamic state updates
+* 🧠 Logic-based gameplay mechanics
+---
+## 🛠️ Tech Stack
+* **Frontend:** React / Next.js
+* **Styling:** CSS (Flexbox + Grid)
+* **State Management:** React Hooks
+* **Build Tools:** Node.js, npm
+---
+## 📂 Project Structure
 ```
 logic-looper/
-├── frontend/
-│   ├── src/
-│   │   ├── components/        # React components
-│   │   ├── store/             # Redux slices
-│   │   ├── utils/             # Puzzle generation & utilities
-│   │   ├── hooks/             # Custom React hooks
-│   │   └── App.jsx
-│   ├── package.json
-│   └── vite.config.js
+│── src/
+│   ├── components/
+│   │   ├── PuzzleGrid.jsx
+│   │   ├── PuzzleCell.jsx
+│   │
+│   ├── styles/
+│   │   └── global.css
+│   │
+│   ├── utils/
+│   │   └── gameLogic.js
+│   │
+│   └── App.jsx
 │
-├── backend/
-│   ├── src/
-│   │   ├── routes/            # API routes
-│   │   ├── models/            # Database models
-│   │   ├── controllers/       # Route handlers
-│   │   └── server.js
-│   ├── prisma/
-│   │   └── schema.prisma
-│   └── package.json
+│── public/
+│── package.json
+│── README.md
 ```
+---
+## 🎨 UI Styling
 
-## Puzzle Types
+The puzzle grid uses CSS Grid for layout:
 
-1. **Sudoku**: Classic 9x9 grid puzzle
-2. **Pattern Matching**: Visual pattern recognition
-3. **Sequence Solver**: Identify mathematical sequences
-4. **Deduction Grid**: Logic-based puzzle solving
-5. **Binary Logic**: 0/1 grid with constraints
-
-## Key Features Implementation
-
-### Client-Side Puzzle Generation
-- Deterministic generation based on date seed
-- Uses CryptoJS for hashing
-- All puzzle logic runs in browser
-- No server dependency for puzzle data
-
-### Daily Reset
-- Automatic reset at midnight (local time)
-- New puzzle unlocks automatically
-- Streak counting logic
-- Time-based rewards
-
-### State Management
-- Redux store for global state
-- Separate slices for puzzle and user data
-- Local persistence with IndexedDB
-
-## API Endpoints
-
-### Users
-- `POST /api/users/register` - Create/login user
-- `GET /api/users/:id` - Get user profile
-- `POST /api/users/:id/streak` - Update streak
-- `POST /api/users/:id/points` - Add points
-
-### Scores
-- `POST /api/scores` - Save daily score
-- `GET /api/scores/:userId/:date` - Get daily score
-- `GET /api/scores/leaderboard/:date` - Get top 100
-- `GET /api/scores/stats/:userId` - Get user statistics
-
-## Performance Targets
-- ⚡ First load: < 100KB
-- ⏱️ TTI: < 3s
-- 🎮 Puzzle generation: < 100ms
-- 📊 Lighthouse score: 95+
-
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
+* 5x5 grid structure
+* Responsive scaling:
+  * Mobile: `3rem` cells
+  * Desktop: `4rem` cells
+```css
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 3rem);
+  gap: 0.5rem;
+}
+```
+---
+## ⚙️ Installation & Setup
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/logic-looper.git
+cd logic-looper
+```
+### 2. Install dependencies
+```bash
+npm install
+```
+### 3. Run development server
+```bash
+npm run dev
+```
+## 🧪 Scripts
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm start        # Run production build
+---
+## 📸 Screenshots
+*Add screenshots here*
+---
+## 🌐 Deployment
+You can deploy using:
+* Vercel (recommended for Next.js)
+* Netlify
+* AWS (S3 + CloudFront)
+---
+## 🔮 Future Improvements
+* 🧠 Advanced puzzle algorithms
+* 🏆 Leaderboard system
+* 🔐 Authentication system
+* ☁️ Cloud sync (AWS / Firebase)
+* 🎮 Multiple difficulty levels
+---
+## 👨‍💻 Author
+**Rohit Mali**
+ Bluestock Fintech
